@@ -20,6 +20,7 @@ class Book {
     this.title = title;
     this.author = author;
     this.coverUrl = coverUrl;
+    this.read = false;
   }
 }
 
@@ -51,7 +52,12 @@ books.map((book) => {
             </div>
             <div class="book-back">
               <img src="${book.coverUrl}" alt="Cover" />
-              <button class="book-back-select ${book.id}">Select</button>
+              <div class="btn-container">
+              <button class="book-back-view ${book.id}">View</button>
+              <button class="book-back-edit ${book.id}">Edit</button>
+              <button class="book-back-delete ${book.id}">Delete</button>
+              <button class="book-back-bookmark ${book.id}">Bookmark</button>
+              </div>
             </div>
           </div>
         </div>`
