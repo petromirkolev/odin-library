@@ -8,6 +8,47 @@
     <title>Library</title>
   </head>
   <body>
-    <script defer src="script.js"></script>
+    <section class="book-library">
+      <div class="book-collection">
+        <section class="nav-menu">
+          <img src="#" alt="#" class="logo" />
+          <button class="add-book">Add</button>
+          <button class="delete-book">Delete</button>
+          <button class="edit-book">Edit</button>
+          <button class="bookmark">Bookmarks</button>
+        </section>
+        <button class="previous">Prev</button>
+        <button class="next">Next</button>
+        <div class="book">
+          <div class="book-inner">
+            <div class="book-front">
+              <img
+                src="images/book-covers-big.jpeg"
+                alt="Avatar"
+                style="width: 300px; height: 300px"
+              />
+              <button class="view">View</button>
+              <button class="edit">Edit</button>
+              <button class="delte">Delete</button>
+            </div>
+            <div class="book-back">
+              <img
+                src="images/book-covers-big.jpeg"
+                alt="Avatar"
+                style="width: 300px; height: 300px"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <a href="https://github.com/petromirkolev">
+        <img src="./images/GitHub-Mark-Light-120px-plus.png" alt="GitHub logo"
+      /></a>
+    </footer>
+    <script defer src="script.js" type="module"></script>
+    <script defer src="views/book.js" type="module"></script>
   </body>
 </html>
