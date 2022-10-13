@@ -19,27 +19,73 @@
         </section>
         <button class="previous">Prev</button>
         <button class="next">Next</button>
-        <div class="book">
-          <div class="book-inner">
-            <div class="book-front">
-              <img
-                src="images/book-covers-big.jpeg"
-                alt="Avatar"
-                style="width: 300px; height: 300px"
-              />
-              <button class="view">View</button>
-              <button class="edit">Edit</button>
-              <button class="delte">Delete</button>
-            </div>
-            <div class="book-back">
-              <img
-                src="images/book-covers-big.jpeg"
-                alt="Avatar"
-                style="width: 300px; height: 300px"
-              />
-            </div>
+      </div>
+    </section>
+
+    <section class="book-controls">
+      <form action="" class="add-book-form">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" />
+        <label for="author">Author</label>
+        <input type="text" name="author" id="author" />
+        <label for="cover">Cover URL</label>
+        <input type="url" name="cover" id="cover" />
+        <button type="submit" id="add-book">Add book</button>
+      </form>
+      <form action="" class="edit-book-form">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" />
+        <label for="author">Author</label>
+        <input type="text" name="author" id="author" />
+        <label for="cover">Cover URL</label>
+        <input type="url" name="cover" id="cover" />
+        <button type="submit" id="add-book">Edit book</button>
+      </form>
+      <div class="delete-book-form">
+        <img src="#" alt="#" />
+        <button>Delete book</button>
+      </div>
+      <div class="bookmark-book-form">
+        <h1>My bookmarked books</h1>
+        <div class="bookmarked-books">
+          <div class="book">
+            <img
+              src="images/book-covers-big.jpeg"
+              style="width: 100px"
+              alt="Cover"
+            />
+          </div>
+          <div class="book">
+            <img
+              src="images/book-covers-big.jpeg"
+              style="width: 100px"
+              alt="Cover"
+            />
+          </div>
+          <div class="book">
+            <img
+              src="images/book-covers-big.jpeg"
+              style="width: 100px"
+              alt="Cover"
+            />
+          </div>
+          <div class="book">
+            <img
+              src="images/book-covers-big.jpeg"
+              style="width: 100px"
+              alt="Cover"
+            />
+          </div>
+          <div class="book">
+            <img
+              src="images/book-covers-big.jpeg"
+              style="width: 100px"
+              alt="Cover"
+            />
           </div>
         </div>
+        <img src="images/book-covers-big.jpeg" style="width: 150px" alt="#" />
+        <button>Bookmark</button>
       </div>
     </section>
 
