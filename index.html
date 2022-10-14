@@ -4,21 +4,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Library</title>
   </head>
   <body>
+    <section class="header">
+      <button class="add-new-book">Add new book</button>
+    </section>
     <section class="book-library">
       <div class="book-collection">
-        <!-- <section class="nav-menu">
-          <img src="#" alt="#" class="logo" />
-          <button class="add-book">Add</button>
-          <button class="delete-book">Delete</button>
-          <button class="edit-book">Edit</button>
-          <button class="bookmark">Bookmarks</button>
-        </section> -->
-        <button class="previous">Prev</button>
-        <button class="next">Next</button>
+        <button class="previous">
+          <span class="material-symbols-outlined"> arrow_back_ios </span>
+        </button>
+        <button class="next">
+          <span class="material-symbols-outlined"> arrow_forward_ios </span>
+        </button>
       </div>
     </section>
 
@@ -48,40 +52,20 @@
       <div class="bookmark-book-form">
         <h1>Bookmarked books</h1>
         <div class="bookmarked-books">
-          <div class="book">
-            <img
-              src="images/book-covers-big.jpeg"
-              style="width: 100px"
-              alt="Cover"
-            />
+          <div class="bkm-book">
+            <img src="images/book-covers-big.jpeg" alt="Cover" />
           </div>
-          <div class="book">
-            <img
-              src="images/book-covers-big.jpeg"
-              style="width: 100px"
-              alt="Cover"
-            />
+          <div class="bkm-book">
+            <img src="images/book-covers-big.jpeg" alt="Cover" />
           </div>
-          <div class="book">
-            <img
-              src="images/book-covers-big.jpeg"
-              style="width: 100px"
-              alt="Cover"
-            />
+          <div class="bkm-book">
+            <img src="images/book-covers-big.jpeg" alt="Cover" />
           </div>
-          <div class="book">
-            <img
-              src="images/book-covers-big.jpeg"
-              style="width: 100px"
-              alt="Cover"
-            />
+          <div class="bkm-book">
+            <img src="images/book-covers-big.jpeg" alt="Cover" />
           </div>
-          <div class="book">
-            <img
-              src="images/book-covers-big.jpeg"
-              style="width: 100px"
-              alt="Cover"
-            />
+          <div class="bkm-book">
+            <img src="images/book-covers-big.jpeg" alt="Cover" />
           </div>
         </div>
         <img src="images/book-covers-big.jpeg" class="current-book" alt="#" />
@@ -91,7 +75,7 @@
 
     <footer>
       <a href="https://github.com/petromirkolev">
-        <img src="./images/GitHub-Mark-Light-120px-plus.png" alt="GitHub logo"
+        <img src="./images/GitHub-Mark-120px-plus.png" alt="GitHub logo"
       /></a>
     </footer>
     <script defer src="script.js" type="module"></script>

@@ -41,6 +41,54 @@ createBook(
   "Hobbitts",
   "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546071216l/5907.jpg"
 );
+createBook(
+  `${books.length + 1}`,
+  "The Hobbit",
+  "Hobbitts",
+  "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546071216l/5907.jpg"
+);
+createBook(
+  `${books.length + 1}`,
+  "The Hobbit",
+  "Hobbitts",
+  "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546071216l/5907.jpg"
+);
+createBook(
+  `${books.length + 1}`,
+  "The Hobbit",
+  "Hobbitts",
+  "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546071216l/5907.jpg"
+);
+createBook(
+  `${books.length + 1}`,
+  "The Hobbit",
+  "Hobbitts",
+  "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546071216l/5907.jpg"
+);
+createBook(
+  `${books.length + 1}`,
+  "The Hobbit",
+  "Hobbitts",
+  "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546071216l/5907.jpg"
+);
+createBook(
+  `${books.length + 1}`,
+  "The Hobbit",
+  "Hobbitts",
+  "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546071216l/5907.jpg"
+);
+createBook(
+  `${books.length + 1}`,
+  "The Hobbit",
+  "Hobbitts",
+  "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546071216l/5907.jpg"
+);
+createBook(
+  `${books.length + 1}`,
+  "The Hobbit",
+  "Hobbitts",
+  "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546071216l/5907.jpg"
+);
 
 books.map((book) => {
   bookCollection.insertAdjacentHTML(

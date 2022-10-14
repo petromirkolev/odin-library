@@ -1,54 +1,100 @@
-/* CSS reset */
+@font-face {
+  font-family: "gentium";
+  src: url(fonts/GentiumBookBasic-Regular.ttf);
+}
 * {
+  font-family: "gentium";
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-/* Body dimesions */
 body {
   width: 100vw;
   height: 100vh;
+  background-color: #eeebdd;
 }
 /* Main library page */
 .book-collection {
-  position: absolute;
-  background-color: rgb(0, 0, 0);
-  padding: 2vh 1vw 1vh 1vw;
-  width: 100vw;
-  height: 100vh;
   display: grid;
+  padding: 2vh 1vw 0 1vw;
+  width: 100vw;
+  height: 80vh;
   grid-template-rows: 1fr 1fr;
-  grid-template-columns: 0.2fr 1fr 1fr 1fr 1fr 1fr 0.2fr;
+  grid-template-columns: 0.1fr 1fr 1fr 1fr 1fr 1fr 0.1fr;
   gap: 10px;
 }
-/* Main library menu */
-/* .nav-menu {
-  visibility: hidden;
-  grid-area: 1 / 2 / 2 / 3;
-} */
+/* Main library header */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}
+.header button {
+  font-size: 1.5em;
+  background-color: #630000;
+  color: white;
+  width: 20vw;
+  height: 5vh;
+  border: none;
+  border-radius: 10px;
+  transition: transform 100ms ease-in-out;
+}
+.header button:hover {
+  transform: scale(1.1);
+}
+.header button:active {
+  transform: scale(1.2);
+}
+/* Main library previous/next buttons */
 .previous {
   visibility: visible;
-  grid-area: 1 / 1 / 3 / 1;
+  grid-area: 1 / 1 / 4 / 1;
 }
 .next {
   visibility: visible;
-  grid-area: 1 / 7 / 3 / 7;
+  grid-area: 1 / 7 / 4 / 7;
+}
+.previous,
+.next {
+  background-color: #d8b6a4;
+  border: none;
+  border-radius: 20px;
+  transition: transform 100ms ease-in-out;
+}
+.previous:hover {
+  transform: translateX(-5px);
+}
+.previous:active {
+  transform: translateX(-10px);
+}
+.next:hover {
+  transform: translateX(5px);
+}
+.next:active {
+  transform: translateX(10px);
 }
 /* Main library menu pages */
-
 .book-controls {
   visibility: hidden;
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 20px;
   top: 3vh;
-  left: 5vw;
-  width: 90vw;
-  height: 90vh;
-  background-color: rebeccapurple;
+  left: 25vw;
+  width: 50vw;
+  height: 85vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.5),
+    rgba(128, 128, 128, 0.5)
+  );
+  transition: transform 200ms ease-in-out;
 }
-/* Add book */
+/* Add book form */
 .add-book-form {
   visibility: hidden;
   position: absolute;
@@ -61,13 +107,16 @@ body {
 }
 .add-book-form label,
 .edit-book-form label {
-  font-size: 2em;
+  font-size: 1.5em;
+  color: white;
   margin: 1vh 0 1vh 0;
 }
 .add-book-form input,
 .edit-book-form input {
   width: 40vw;
   height: 10vh;
+  font-size: 2em;
+  padding-left: 1vw;
   border-radius: 20px;
   border: none;
 }
@@ -75,12 +124,25 @@ body {
 .edit-book-form button,
 .delete-book-form button {
   position: absolute;
-  bottom: 2vh;
+  bottom: 5vh;
   font-size: 2em;
   width: 20vw;
   height: 7vh;
   border-radius: 20px;
   border: none;
+  background-color: #630000;
+  color: white;
+  transition: transform 200ms ease-in-out;
+}
+.add-book-form button:hover,
+.edit-book-form button:hover,
+.delete-book-form button:hover {
+  transform: scale(1.1);
+}
+.add-book-form button:active,
+.edit-book-form button:active,
+.delete-book-form button:active {
+  transform: scale(1.2);
 }
 /* Edit book */
 .edit-book-form {
@@ -102,7 +164,7 @@ body {
   align-items: center;
   height: 100%;
   width: 100%;
-  padding: 8vh 0 5vh 0;
+  padding: 3vh 0 5vh 0;
 }
 .delete-book-form img {
   height: 70vh;
@@ -126,12 +188,24 @@ body {
   display: grid;
   gap: 1vw;
   margin-bottom: 2vh;
+  padding-left: 2%;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+.bookmarked-books img {
+  border-radius: 5px;
+  width: 90%;
+  transition: transform 200ms ease-in-out;
+}
+.bookmarked-books img:hover,
+.current-book:hover {
+  transform: scale(1.1);
 }
 .current-book {
   height: 35vh;
+  border-radius: 10px;
   margin-top: 2vh;
   margin-bottom: 3vh;
+  transition: transform 200ms ease-in-out;
 }
 .bookmark-book-form button {
   position: absolute;
@@ -141,18 +215,22 @@ body {
   height: 6vh;
   border-radius: 20px;
   border: none;
+  transition: transform 200ms ease-in-out;
 }
-
+.bookmark-book-form button:hover {
+  transform: scale(1.1);
+}
+.bookmark-book-form button:active {
+  transform: scale(1.2);
+}
 /* Books display */
 .book-library {
   width: 100vw;
-  height: 95vh;
+  height: 85vh;
 }
 /* Book flip effect */
 .book {
-  background-color: transparent;
-  border: 1px solid #f1f1f1;
-  perspective: 1000px;
+  perspective: 500px;
 }
 .book img {
   max-width: 100%;
@@ -177,7 +255,6 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
 }
 /* Style the front side (fallback if image is missing) */
@@ -189,13 +266,17 @@ body {
   color: white;
   transform: rotateY(180deg);
 }
-/* Select book button */
-
+.book-back img,
+.book-front img {
+  border-radius: 10px;
+}
+/* Book back side buttons */
 .btn-container {
   position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -205,21 +286,27 @@ body {
 .book-back-edit,
 .book-back-delete,
 .book-back-bookmark {
-  width: 100%;
+  width: 85%;
   height: 20%;
   border: none;
+  width: 80%;
   background-color: rgba(0, 0, 0, 0.6);
   color: white;
-  font-size: 2rem;
+  font-size: 1.5rem;
   transition: transform 100ms ease-in-out;
 }
 .book-back-view:hover,
 .book-back-edit:hover,
 .book-back-delete:hover,
 .book-back-bookmark:hover {
-  border-radius: 20px;
-  background-color: rgba(0, 0, 0, 0.8);
-  transform: scale(1.1);
+  background-color: rgba(99, 0, 0, 0.8);
+  transform: scale(1.2);
+}
+.book-back-view:active,
+.book-back-edit:active,
+.book-back-delete:active,
+.book-back-bookmark:active {
+  transform: scale(1.3);
 }
 .book-back-select:active {
   transform: translateY(-10px);
@@ -227,6 +314,7 @@ body {
 /* Footer styling */
 footer {
   display: flex;
+  background-color: rebeccapurple;
   justify-content: center;
   align-items: center;
   width: 100vw;
