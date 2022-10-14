@@ -12,53 +12,67 @@
     <title>Library</title>
   </head>
   <body>
-    <section class="header">
-      <button class="form add-new-book">Add new book</button>
-    </section>
-    <section class="form book-library">
-      <div class="book-collection">
-        <div class="book-display"></div>
-      </div>
-    </section>
-    <section class="form book-controls">
-      <form action="" class="form add-book-form">
-        <label for="title" class="form">Title</label>
-        <input type="text" name="title" class="form" id="add-title" />
-        <label for="author" class="form">Author</label>
-        <input type="text" name="author" class="form" id="add-author" />
-        <label for="cover" class="form">Cover URL</label>
-        <input type="url" name="cover" class="form" id="add-cover" />
-        <button class="form" id="add-book">Add book</button>
-      </form>
-      <form action="" class="form edit-book-form">
-        <label for="title" class="form">Title</label>
-        <input type="text" name="title" class="form" id="edit-title" />
-        <label for="author" class="form">Author</label>
-        <input type="text" name="author" class="form" id="edit-author" />
-        <label for="cover" class="form">Cover URL</label>
-        <input type="url" name="cover" class="form" id="edit-cover" />
-        <button class="form" id="edit-book">Edit book</button>
-      </form>
-      <div class="form view-book-form"></div>
-      <div class="form delete-book-form">
-        <img class="form" src="images/book-covers-big.jpeg" alt="#" />
-        <button class="form" id="delete-book">Delete book</button>
-      </div>
-      <div class="form bookmark-book-form">
-        <h1 class="form">Bookmarked books</h1>
-        <div class="form bookmarked-books">
-          <div class="form bkm-book">
-            <img class="form" src="images/book-covers-big.jpeg" alt="Cover" />
-          </div>
+    <div class="library-container">
+      <section class="header">
+        <button class="add-new-book">Add new book</button>
+      </section>
+      <section class="form book-library">
+        <div class="book-collection">
+          <div class="book-display"></div>
         </div>
-        <img
-          src="images/book-covers-big.jpeg"
-          class="form current-book"
-          alt="#"
-        />
-        <button class="form" id="bookmark-book">Bookmark</button>
-      </div>
-    </section>
+      </section>
+      <section class="form book-controls">
+        <form action="" class="form add-book-form">
+          <label for="title" class="add-title">Title</label>
+          <input
+            type="text"
+            name="title"
+            class="inp-add-title"
+            id="add-title"
+          />
+          <label for="author" class="add-author">Author</label>
+          <input
+            type="text"
+            name="author"
+            class="inp-add-author"
+            id="add-author"
+          />
+          <label for="cover" class="add-url">Cover URL</label>
+          <input type="url" name="cover" class="inp-add-url" id="add-cover" />
+          <button class="form-add-book" id="add-book">Add book</button>
+        </form>
+        <form action="" class="form edit-book-form">
+          <label for="title" class="edit-title">Title</label>
+          <input type="text" name="title" class="form" id="edit-title" />
+          <label for="author" class="edit-author">Author</label>
+          <input type="text" name="author" class="form" id="edit-author" />
+          <label for="cover" class="edit-url">Cover URL</label>
+          <input type="url" name="cover" class="form" id="edit-cover" />
+          <button class="form-edit-book" id="edit-book">Edit book</button>
+        </form>
+        <div class="form view-book-form"></div>
+        <div class="form delete-book-form">
+          <img class="form" src="images/book-covers-big.jpeg" alt="#" />
+          <button class="form-delete-book" id="delete-book">Delete book</button>
+        </div>
+        <div class="form bookmark-book-form">
+          <h1 class="form">Bookmarked books</h1>
+          <div class="form bookmarked-books">
+            <div class="form bkm-book">
+              <img class="form" src="images/book-covers-big.jpeg" alt="Cover" />
+            </div>
+          </div>
+          <img
+            src="images/book-covers-big.jpeg"
+            class="form current-book"
+            alt="#"
+          />
+          <button class="form-bookmark-book" id="bookmark-book">
+            Bookmark
+          </button>
+        </div>
+      </section>
+    </div>
     <footer>
       <a href="https://github.com/petromirkolev">
         <img src="./images/GitHub-Mark-120px-plus.png" alt="GitHub logo"
