@@ -1,102 +1,102 @@
 // Global variables
 let books = [];
+const bookDisplay = document.querySelector(".book-library");
 const libraryContainer = document.querySelector(".library-container");
-const bookCollection = document.querySelector(".book-collection");
+const addForm = document.querySelector(".add-book-form");
+const editForm = document.querySelector(".edit-book-form");
 
-const bookLibrary = document.querySelector(".book-library");
-const addBookBtn = document.querySelector(".add-new-book");
-const bookControls = document.querySelector(".book-controls");
-const addBookForm = document.querySelector(".add-book-form");
-const editBookForm = document.querySelector(".edit-book-form");
-const viewBookForm = document.querySelector(".view-book-form");
-const deleteBookForm = document.querySelector(".delete-book-form");
-const bookmarkBookForm = document.querySelector(".bookmark-book-form");
-const bookDisplay = document.querySelector(".book-display");
-let canOpenModal = true;
+// Check which button is pressed
+libraryContainer.addEventListener("click", (e) => {
+  const currentId = e.target.classList[1];
 
-// === Constructors === //
+  switch (e.target.classList[0]) {
+    case "book-add":
+      return addNewBook();
+    case "book-view":
+      console.log("book view");
+      return;
+    case "book-edit":
+      return editBook(currentId);
+    case "book-delete":
+      console.log("book delete");
+      return;
+    case "book-bookmark":
+      console.log("book bookmark");
+      return;
+  }
+});
+
+// Add new book
+const addNewBook = () => {
+  addForm.style.visibility = "visible";
+  const title = document.querySelector(".inp-add-title");
+  const author = document.querySelector(".inp-add-author");
+  const url = document.querySelector(".inp-add-url");
+  document
+    .querySelector(".btn-add-book")
+    .addEventListener("click", function addBook(e) {
+      e.preventDefault();
+      createBook(title.value, author.value, url.value);
+      title.value = author.value = url.value = "";
+      renderBooks();
+      addForm.style.visibility = "hidden";
+      document
+        .querySelector(".btn-add-book")
+        .removeEventListener("click", addBook);
+    });
+};
+// Edit existing book
+const editBook = (currentId) => {
+  books.map((book) => {
+    if (book.id !== +currentId) return;
+    editForm.style.visibility = "visible";
+    document.querySelector("#edit-title").value = book.title;
+    document.querySelector("#edit-author").value = book.author;
+    document.querySelector("#edit-url").value = book.url;
+    document
+      .querySelector(".btn-edit-book")
+      .addEventListener("click", function editCurrentBook(e) {
+        e.preventDefault();
+        book.title = document.querySelector("#edit-title").value;
+        book.author = document.querySelector("#edit-author").value;
+        book.url = document.querySelector("#edit-url").value;
+        renderBooks();
+        editForm.style.visibility = "hidden";
+        document
+          .querySelector(".btn-edit-book")
+          .removeEventListener("click", editCurrentBook);
+      });
+  });
+};
+
 // Create book object constructor
 class Book {
-  constructor(title, author, coverUrl) {
+  constructor(title, author, url) {
     this.id = books.length + 1;
     this.title = title;
     this.author = author;
-    this.coverUrl = coverUrl;
+    this.url = url;
     this.read = false;
   }
 }
 // Create new book object and add it to books array
 const createBook = function (title, author, url) {
   books.push(new Book(title, author, url));
-  console.log(books);
 };
-//////////////////////////////
-//////////////////////////////
-//////////////////////////////
-const getInput = (action) => {
-  let title = document.querySelector(`.inp-${action}-title`).value;
-  let author = document.querySelector(`.inp-${action}-author`).value;
-  let url = document.querySelector(`.inp-${action}-url`).value;
 
-  return [title, author, url];
-};
-//////////////////////////////
-//////////////////////////////
-//////////////////////////////
-
-libraryContainer.addEventListener("click", function (e) {
-  if (e.target.tagName !== "BUTTON") return;
-
-  switch (e.target.classList[0]) {
-    case "add-new-book":
-      openModal();
-      addBookForm.style.visibility = "visible";
-
-      document
-        .querySelector(".form-add-book")
-        .addEventListener("click", (e) => {
-          e.preventDefault();
-          const [title, author, url] = getInput("add");
-          createBook(title, author, url);
-          renderBooks();
-        });
-
-      break;
-    case "book-view":
-      console.log("asd");
-      break;
-    case "book-edit":
-      console.log("asd");
-      break;
-    case "book-delete":
-      console.log("asd");
-      break;
-    case "book-bookmark":
-      console.log("asd");
-      break;
-    default:
-      return;
-  }
-});
-
-//////////////////////////////
-//////////////////////////////
-//////////////////////////////
-//////////////////////////////
-//////////////////////////////
-//////////////////////////////
-// === Helper functions === //
 // Display all books on home page
 const renderBooks = () => {
   bookDisplay.innerHTML = "";
+  console.log(books);
   books.map((book) => displayBook(book));
 };
+
 // Single book view
 const displayBook = (book) => {
   bookDisplay.insertAdjacentHTML(
     "afterbegin",
     ` <div class="book">
-              <img src="${book.coverUrl}" alt="Cover" />
+              <img src="${book.url}" alt="Cover" />
               <div class="book-btn-container">
               <button class="book-view ${book.id}">View</button>
               <button class="book-edit ${book.id}">Edit</button>
@@ -106,24 +106,16 @@ const displayBook = (book) => {
         </div>`
   );
 };
-// Open modal on button click
-const openModal = () => {
-  bookControls.style.visibility = "visible";
-  canOpenModal = false;
-};
-// Find book in books array
-bookCollection.addEventListener("click", function (e) {
-  if (!e.target.classList.contains("btn-book")) return;
-  const currentBookId = e.target.classList[2];
-  books.find((book) => {
-    if (book.id !== +currentBookId) return;
-    // console.log(book);
-  });
-});
-// === Initialize library === //
+
 createBook(
   "Az",
   "Ti",
   "https://edit.org/photos/images/cat/book-covers-big-2019101610.jpg-1300.jpg"
 );
+createBook(
+  "toi",
+  "tq",
+  "https://edit.org/photos/images/cat/book-covers-big-2019101610.jpg-1300.jpg"
+);
+
 renderBooks();

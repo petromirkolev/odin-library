@@ -14,231 +14,35 @@ body {
   background-color: #eeebdd;
 }
 /* Main library page */
-.book-collection {
+.library-container {
   display: grid;
-  padding: 2vh 0 0 0;
-  width: 90vw;
-  height: 80vh;
-  grid-template-rows: 1fr 1fr;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  grid-template-rows: 1fr 10fr 0.1fr;
   grid-template-columns: 1fr;
   gap: 10px;
 }
-.book-display {
-  overflow: scroll;
-  display: grid;
-  padding: 2vh 1vw 0 1vw;
-  width: 100vw;
-  height: 80vh;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  gap: 10px;
-}
-/* Main library header */
-.header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10vh;
-}
-.header button {
+/* Add new book button */
+.book-add {
   font-size: 1.5em;
-  background-color: #630000;
+  border: none;
   color: white;
-  width: 20vw;
-  height: 5vh;
-  border: none;
-  border-radius: 10px;
-  transition: transform 100ms ease-in-out;
-}
-.header button:hover {
-  transform: scale(1.1);
-}
-.header button:active {
-  transform: scale(1.2);
-}
-/* Main library previous/next buttons */
-.previous {
-  visibility: visible;
-  grid-area: 1 / 1 / 4 / 1;
-}
-.next {
-  visibility: visible;
-  grid-area: 1 / 3 / 4 / 4;
-}
-.previous,
-.next {
-  background-color: #d8b6a4;
-  border: none;
-  border-radius: 20px;
-  transition: transform 100ms ease-in-out;
-}
-.previous:hover {
-  transform: translateX(-5px);
-}
-.previous:active {
-  transform: translateX(-10px);
-}
-.next:hover {
-  transform: translateX(5px);
-}
-.next:active {
-  transform: translateX(10px);
-}
-/* Main library menu pages */
-.book-controls {
-  visibility: hidden;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 20px;
-  top: 3vh;
-  left: 25vw;
-  width: 50vw;
-  height: 85vh;
-  background-color: rgba(0, 0, 0, 0.7);
-  background-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.5),
-    rgba(128, 128, 128, 0.5)
-  );
+  background-color: rgba(99, 0, 0, 0.7);
   transition: transform 200ms ease-in-out;
 }
-/* Add book form */
-.add-book-form {
-  visibility: hidden;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  padding: 8vh 0 5vh 0;
+.book-add:hover {
+  background-color: rgba(99, 0, 0, 0.9);
 }
-.add-book-form label,
-.edit-book-form label {
-  font-size: 1.5em;
-  color: white;
-  margin: 1vh 0 1vh 0;
-}
-.add-book-form input,
-.edit-book-form input {
-  width: 40vw;
-  height: 10vh;
-  font-size: 2em;
-  padding-left: 1vw;
-  border-radius: 20px;
-  border: none;
-}
-.add-book-form button,
-.edit-book-form button,
-.delete-book-form button {
-  position: absolute;
-  bottom: 5vh;
-  font-size: 2em;
-  width: 20vw;
-  height: 7vh;
-  border-radius: 20px;
-  border: none;
-  background-color: #630000;
-  color: white;
-  transition: transform 200ms ease-in-out;
-}
-.add-book-form button:hover,
-.edit-book-form button:hover,
-.delete-book-form button:hover {
-  transform: scale(1.1);
-}
-.add-book-form button:active,
-.edit-book-form button:active,
-.delete-book-form button:active {
-  transform: scale(1.2);
-}
-/* View book */
-
-/* Edit book */
-.edit-book-form {
-  visibility: hidden;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  padding: 8vh 0 5vh 0;
-}
-/* Delete book form */
-.delete-book-form {
-  visibility: hidden;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  padding: 3vh 0 5vh 0;
-}
-.delete-book-form img {
-  height: 65vh;
-  border-radius: 20px;
-}
-/* Bookmark book form */
-.bookmark-book-form {
-  visibility: hidden;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  padding: 2vh 0 0 0;
-}
-.bookmark-book-form h1 {
-  margin-bottom: 1vh;
-}
-.bookmarked-books {
-  display: grid;
-  gap: 1vw;
-  margin-bottom: 2vh;
-  padding-left: 2%;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-}
-.bookmarked-books img {
-  border-radius: 5px;
-  width: 90%;
-  transition: transform 200ms ease-in-out;
-}
-.bookmarked-books img:hover,
-.current-book:hover {
-  transform: scale(1.1);
-}
-.current-book {
-  height: 35vh;
-  border-radius: 10px;
-  margin-top: 2vh;
-  margin-bottom: 3vh;
-  transition: transform 200ms ease-in-out;
-}
-.bookmark-book-form button {
-  position: absolute;
-  font-size: 1.5em;
-  bottom: 3vh;
-  width: 15vw;
-  height: 6vh;
-  border-radius: 20px;
-  border: none;
-  transition: transform 200ms ease-in-out;
-}
-.bookmark-book-form button:hover {
-  transform: scale(1.1);
-}
-.bookmark-book-form button:active {
-  transform: scale(1.2);
+.book-add:active {
+  transform: scale(0.95);
 }
 /* Books display */
 .book-library {
-  width: 100vw;
-  height: 85vh;
+  overflow: scroll;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 30px;
 }
 /* Single book display */
 .book {
@@ -254,6 +58,7 @@ body {
 }
 .book img {
   width: 11vw;
+  border-radius: 20px;
 }
 /* Book buttons */
 .book-btn-container {
@@ -264,8 +69,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 50%;
 }
 .book-view,
 .book-edit,
@@ -292,11 +97,174 @@ body {
 .book-bookmark:active {
   transform: scale(1.3);
 }
-
+/* Add book form */
+.add-book-form {
+  position: fixed;
+  top: 0;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 8vh 0 5vh 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.5),
+    rgba(128, 128, 128, 0.5)
+  );
+  transition: transform 200ms ease-in-out;
+}
+/* Edit book */
+.edit-book-form {
+  position: fixed;
+  top: 0;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 8vh 0 5vh 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.5),
+    rgba(128, 128, 128, 0.5)
+  );
+  transition: transform 200ms ease-in-out;
+}
+/* Delete book form */
+.delete-book-form {
+  position: fixed;
+  top: 0;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 8vh 0 5vh 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.5),
+    rgba(128, 128, 128, 0.5)
+  );
+  transition: transform 200ms ease-in-out;
+}
+.delete-book-form img {
+  height: 65vh;
+  border-radius: 20px;
+}
+/* Bookmark book form */
+.bookmark-book-form {
+  position: fixed;
+  top: 0;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 0vh 0 0vh 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.5),
+    rgba(128, 128, 128, 0.5)
+  );
+  transition: transform 200ms ease-in-out;
+}
+.bookmark-book-form h1 {
+  font-size: 2 em;
+  color: white;
+  margin: 2vh 0 5vh 0;
+}
+.bookmarked-books {
+  display: grid;
+  gap: 1vw;
+  margin-bottom: 8vh;
+  padding-left: 2%;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+.bookmarked-books img {
+  border-radius: 5px;
+  width: 50%;
+  transition: transform 200ms ease-in-out;
+}
+.bookmarked-books img:hover,
+.current-book:hover {
+  transform: scale(1.1);
+}
+.current-book {
+  height: 35vh;
+  border-radius: 10px;
+  margin-top: 2vh;
+  transition: transform 200ms ease-in-out;
+}
+.bookmark-book-form button {
+  position: absolute;
+  font-size: 1.5em;
+  bottom: 3vh;
+  width: 15vw;
+  height: 6vh;
+  border-radius: 20px;
+  border: none;
+  transition: transform 200ms ease-in-out;
+}
+.bookmark-book-form button:hover {
+  transform: scale(1.1);
+}
+.bookmark-book-form button:active {
+  transform: scale(1.2);
+}
+/* Forms buttons */
+.add-book-form label,
+.edit-book-form label {
+  font-size: 1.5em;
+  color: white;
+  margin: 3vh 0 3vh 0;
+}
+.add-book-form input,
+.edit-book-form input {
+  width: 40vw;
+  height: 10vh;
+  font-size: 2em;
+  padding-left: 1vw;
+  border-radius: 20px;
+  border: none;
+}
+.add-book-form button,
+.edit-book-form button,
+.delete-book-form button {
+  position: absolute;
+  bottom: 10vh;
+  font-size: 1.5em;
+  width: 20vw;
+  height: 7vh;
+  border-radius: 20px;
+  border: none;
+  background-color: #630000;
+  color: white;
+  transition: transform 200ms ease-in-out;
+}
+.add-book-form button:hover,
+.edit-book-form button:hover,
+.delete-book-form button:hover {
+  transform: scale(1.1);
+}
+.add-book-form button:active,
+.edit-book-form button:active,
+.delete-book-form button:active {
+  transform: scale(1.2);
+}
 /* Footer styling */
 footer {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   width: 100vw;
   height: 5vh;
 }
