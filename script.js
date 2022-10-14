@@ -18,8 +18,7 @@ libraryContainer.addEventListener("click", (e) => {
     case "book-edit":
       return editBook(currentId);
     case "book-delete":
-      console.log("book delete");
-      return;
+      return deleteBook(currentId);
     case "book-bookmark":
       console.log("book bookmark");
       return;
@@ -68,6 +67,8 @@ const editBook = (currentId) => {
       });
   });
 };
+// Delete existing book
+const deleteBook = (currentId) => {};
 
 // Create book object constructor
 class Book {
