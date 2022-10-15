@@ -70,14 +70,12 @@ body {
   flex-direction: column;
   justify-content: center;
   width: 80%;
-  height: 50%;
+  height: 100%;
 }
 .book-view,
 .book-edit,
 .book-delete,
 .book-bookmark {
-  width: 100%;
-  height: 20%;
   border: none;
   background-color: rgba(0, 0, 0, 0.6);
   color: white;
@@ -89,13 +87,13 @@ body {
 .book-delete:hover,
 .book-bookmark:hover {
   background-color: rgba(99, 0, 0, 0.8);
-  transform: scale(1.2);
+  transform: scale(1.5);
 }
 .book-view:active,
 .book-edit:active,
 .book-delete:active,
 .book-bookmark:active {
-  transform: scale(1.3);
+  transform: scale(1.6);
 }
 /* Add book form */
 .add-book-form {
