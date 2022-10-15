@@ -14,6 +14,7 @@ Library project as a part of the online course TheOdinProject
 - [ ] Allow users to remove bookmarked books from bookmarks
 - [ ] Add bookmark status in book view
 - [ ] Improve responsiveness
+- [ ] Fix Bookmark > Bookmarked books display (UI breaks if more than N books are bookmarked)
 
 ### ✔ Done
 
