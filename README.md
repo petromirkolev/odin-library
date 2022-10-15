@@ -10,16 +10,17 @@ Library project as a part of the online course TheOdinProject
 
 # 🔨 To-Do
 
-- [ ] Remove book from bookmarks if the book is deleted
-- [ ] Allow users to remove bookmarked books from bookmarks
-- [ ] Add bookmark status in book view
 - [ ] Improve responsiveness
-- [ ] Fix Bookmark > Bookmarked books display (UI breaks if more than N books are bookmarked)
+- [ ] Improve interface and animations
 
 ### ✔ Done
 
 - [x] Create basic library functionality - add, view, edit, mark as read or bookmark books
-- [x] Make the layout somehow responsive
+- [x] Make the layout responsive
+- [x] Remove book from bookmarks if the book is deleted
+- [x] Allow users to remove bookmarked books from bookmarks
+- [x] Add bookmark status in book view
+- [x] Fix Bookmark > Bookmarked books display (UI breaks if more than N books are bookmarked)
 
 # 📖 Debugging notes
 
