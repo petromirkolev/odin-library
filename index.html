@@ -13,7 +13,10 @@
   </head>
   <body>
     <div class="library-container">
-      <button class="book-add">Add new book</button>
+      <section class="nav-buttons">
+        <button class="book-add">Add new book</button>
+        <button class="book-bookmarked">Bookmarked books</button>
+      </section>
       <section class="book-library"></section>
       <section class="book-controls">
         <form action="" class="add-book-form">
@@ -42,19 +45,31 @@
           <input type="text" name="author" class="author" id="edit-author" />
           <label for="cover" class="edit-url">Current cover URL</label>
           <input type="url" name="cover" class="url" id="edit-url" />
-          <label for="checkbox">Have you read the book?</label>
-          <input
-            type="checkbox"
-            name="edit-status"
-            class="edit-status"
-            id="edit-status"
-          />
+          <div class="checkboxes">
+            <label for="checkbox">Mark as read</label>
+            <input
+              type="checkbox"
+              name="mark-edit"
+              class="mark-edit"
+              id="mark-edit"
+            />
+            <label for="checkbox">Bookmark</label>
+            <input
+              type="checkbox"
+              name="mark-bookmark"
+              class="mark-bookmark"
+              id="mark-bookmark"
+            />
+          </div>
+
           <button class="btn-edit-book" id="edit-book">Edit book</button>
         </form>
         <div class="view-book-form">
           <img class="view-book-img" src="" alt="View current book" />
           <h1>Have you read the book?</h1>
           <p class="read-status">N/A</p>
+          <h1>Is the book in your bookmarked books?</h1>
+          <p class="bookmark-status">N/A</p>
           <button class="btn-close-view-book" id="close-view-book">
             Close
           </button>
@@ -68,12 +83,7 @@
           <div class="bookmarked-books">
             <!-- Bookmarked books are shown here -->
           </div>
-          <img
-            src=""
-            class="bookmark-current-book"
-            alt="Bookmark current book"
-          />
-          <button class="btn-bookmark-book" id="bookmark-book">Bookmark</button>
+          <button class="btn-bookmark-close" id="bookmark-book">Close</button>
         </div>
       </section>
       <footer>

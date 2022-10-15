@@ -6,6 +6,7 @@ let books = [
     author: "My name here",
     url: "https://edit.org/photos/images/cat/book-covers-big-2019101610.jpg-1300.jpg",
     read: true,
+    bookmarked: false,
   },
   {
     id: 2,
@@ -13,17 +14,10 @@ let books = [
     author: "Terry Crosby",
     url: "https://www.adobe.com/express/create/cover/media_178ebed46ae02d6f3284c7886e9b28c5bb9046a02.jpeg",
     read: false,
+    bookmarked: false,
   },
 ];
-let bookmarks = [
-  {
-    id: 1,
-    title: "My book cover",
-    author: "My name here",
-    url: "https://edit.org/photos/images/cat/book-covers-big-2019101610.jpg-1300.jpg",
-    read: true,
-  },
-];
+let bookmarks = [];
 const query = document.querySelector.bind(document);
 const bookDisplay = query(".book-library");
 const libraryContainer = query(".library-container");
@@ -41,8 +35,9 @@ class Book {
     this.title = title;
     this.author = author;
     this.url = url;
-    this.read = false;
   }
+  read = false;
+  bookmarked = false;
 }
 // Create new book object and add it to books []
 const createBook = function (title, author, url) {
@@ -60,8 +55,8 @@ libraryContainer.addEventListener("click", (e) => {
       return editBook(currentId);
     case "book-delete":
       return deleteBook(currentId);
-    case "book-bookmark":
-      return bookmarkBook(currentId);
+    case "book-bookmarked":
+      return bookmarkBook();
     default:
       return;
   }
@@ -95,6 +90,7 @@ const viewBook = (currentId) => {
     viewForm.style.visibility = "visible";
     query(".view-book-img").src = book.url;
     query(".read-status").textContent = book.read ? "Yes" : "No";
+    query(".bookmark-status").textContent = book.bookmarked ? "Yes" : "No";
     query(".btn-close-view-book").addEventListener("click", (e) => {
       e.preventDefault();
       viewForm.style.visibility = "hidden";
@@ -110,19 +106,22 @@ const editBook = (currentId) => {
       query("#edit-title").value,
       query("#edit-author").value,
       query("#edit-url").value,
-      query("#edit-status").checked,
-    ] = [book.title, book.author, book.url, book.read];
+      query("#mark-edit").checked,
+      query("#mark-bookmark").checked,
+    ] = [book.title, book.author, book.url, book.read, book.bookmarked];
 
     query(".btn-edit-book").addEventListener(
       "click",
       function editCurrentBook(e) {
         e.preventDefault();
-        [book.title, book.author, book.url, book.read] = [
+        [book.title, book.author, book.url, book.read, book.bookmarked] = [
           query("#edit-title").value,
           query("#edit-author").value,
           query("#edit-url").value,
-          query("#edit-status").checked,
+          query("#mark-edit").checked,
+          query("#mark-bookmark").checked,
         ];
+        if (book.bookmarked === true) bookmarks.push(book);
         renderBooks();
         editForm.style.visibility = "hidden";
         query(".btn-edit-book").removeEventListener("click", editCurrentBook);
@@ -140,8 +139,8 @@ const deleteBook = (currentId) => {
       "click",
       function deleteCurrentBook(e) {
         e.preventDefault();
-        const index = books.findIndex((book) => book.id === +currentId);
-        books.splice(index, 1);
+        deleteBookHelper(book, currentId);
+        deleteBookmarkedBookHelper(book, currentId);
         deleteForm.style.visibility = "hidden";
         renderBooks();
         query(".btn-delete-book").removeEventListener(
@@ -152,33 +151,25 @@ const deleteBook = (currentId) => {
     );
   });
 };
-// Bookmark existing book
-const bookmarkBook = (currentId) => {
-  // Render bookmarks preview
+// Bookmarked books
+const bookmarkBook = () => {
   bookmarkForm.style.visibility = "visible";
   bookmarkedBooks.innerHTML = "";
   bookmarks.map((book) => {
     bookmarkedBooks.insertAdjacentHTML(
       "beforeend",
-      `<div class="bkm-book">
+      `<div class="bkm-book ${book.id}">
         <img class="bookmarks-book-img" src="${book.url}" alt="Cover" />
+        <button class="remove-bookmarked-book">X</button>
       </div>`
     );
   });
-  const index = books.findIndex((book) => book.id === +currentId);
-  query(".bookmark-current-book").src = books[index].url;
-  // Handle bookmark logic
-  query(".btn-bookmark-book").addEventListener(
+  query(".btn-bookmark-close").addEventListener(
     "click",
     function bookmarkCurrentBook(e) {
       e.preventDefault();
-      let isBookmarked;
-      bookmarks.map((book) => {
-        if (book.id === +currentId) isBookmarked = true;
-      });
-      if (!isBookmarked) bookmarks.push(books[index]);
       bookmarkForm.style.visibility = "hidden";
-      query(".btn-bookmark-book").removeEventListener(
+      query(".btn-bookmark-close").removeEventListener(
         "click",
         bookmarkCurrentBook
       );
@@ -195,10 +186,29 @@ const displayBook = (book) => {
           <button class="book-view ${book.id}">View</button>
           <button class="book-edit ${book.id}">Edit</button>
           <button class="book-delete ${book.id}">Delete</button>
-          <button class="book-bookmark ${book.id}">Bookmark</button>
         </div>
       </div>`
   );
 };
 // Initialize library
 renderBooks();
+
+// Helpers
+const deleteBookmarkedBookHelper = (book, currentId) => {
+  const bookmarkIndex = bookmarks.findIndex((book) => book.id === +currentId);
+  bookmarks.splice(bookmarkIndex, 1);
+};
+const deleteBookHelper = (book, currentId) => {
+  const index = books.findIndex((book) => book.id === +currentId);
+  books.splice(index, 1);
+};
+//// Remove book from bookmarked books
+query(".bookmarked-books").addEventListener("click", (e) => {
+  const id = e.target.parentElement.classList[1];
+  let index = bookmarks.findIndex((book) => book.id === +id);
+  let currentBook = bookmarks.splice(index, 1);
+  books.map((book) => {
+    if (book.id === currentBook[0].id) book.bookmarked = false;
+  });
+  bookmarkBook();
+});

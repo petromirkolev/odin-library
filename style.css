@@ -23,18 +23,28 @@ body {
   grid-template-columns: 1fr;
   gap: 10px;
 }
-/* Add new book button */
-.book-add {
+/* Header buttons */
+.nav-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+.book-add,
+.book-bookmarked {
   font-size: 1.5em;
+  width: 40vw;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
   border: none;
   color: white;
   background-color: rgba(99, 0, 0, 0.7);
   transition: transform 200ms ease-in-out;
 }
-.book-add:hover {
+.book-add:hover,
+.book-bookmarked:hover {
   background-color: rgba(99, 0, 0, 0.9);
 }
-.book-add:active {
+.book-add:active,
+.book-bookmarked:active {
   transform: scale(0.95);
 }
 /* Books display */
@@ -74,8 +84,7 @@ body {
 }
 .book-view,
 .book-edit,
-.book-delete,
-.book-bookmark {
+.book-delete {
   border: none;
   background-color: rgba(0, 0, 0, 0.6);
   color: white;
@@ -84,15 +93,13 @@ body {
 }
 .book-view:hover,
 .book-edit:hover,
-.book-delete:hover,
-.book-bookmark:hover {
+.book-delete:hover {
   background-color: rgba(99, 0, 0, 0.8);
   transform: scale(1.5);
 }
 .book-view:active,
 .book-edit:active,
-.book-delete:active,
-.book-bookmark:active {
+.book-delete:active {
   transform: scale(1.6);
 }
 /* Add book form */
@@ -105,7 +112,7 @@ body {
   align-items: center;
   height: 100%;
   width: 100%;
-  padding: 8vh 0 5vh 0;
+  padding: 2vh 0 5vh 0;
   background-color: rgba(0, 0, 0, 0.7);
   background-image: linear-gradient(
     to right,
@@ -124,7 +131,7 @@ body {
   align-items: center;
   height: 100%;
   width: 100%;
-  padding: 8vh 0 5vh 0;
+  padding: 2vh 0 5vh 0;
   background-color: rgba(0, 0, 0, 0.7);
   background-image: linear-gradient(
     to right,
@@ -133,7 +140,17 @@ body {
   );
   transition: transform 200ms ease-in-out;
 }
-
+.checkboxes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#mark-edit,
+#mark-bookmark {
+  width: 30px;
+  margin: -15px 0 -15px 0;
+  height: 30px;
+}
 /* Delete book form */
 .delete-book-form {
   position: fixed;
@@ -144,7 +161,7 @@ body {
   align-items: center;
   height: 100%;
   width: 100%;
-  padding: 8vh 0 5vh 0;
+  padding: 2vh 0 5vh 0;
   background-color: rgba(0, 0, 0, 0.7);
   background-image: linear-gradient(
     to right,
@@ -166,7 +183,7 @@ body {
   align-items: center;
   height: 100%;
   width: 100%;
-  padding: 8vh 0 5vh 0;
+  padding: 2vh 0 5vh 0;
   background-color: rgba(0, 0, 0, 0.7);
   background-image: linear-gradient(
     to right,
@@ -213,6 +230,7 @@ body {
   margin: 2vh 0 5vh 0;
 }
 .bookmarked-books {
+  overflow: scroll;
   display: grid;
   gap: 1vw;
   margin-bottom: 8vh;
@@ -224,17 +242,31 @@ body {
   width: 50%;
   transition: transform 200ms ease-in-out;
 }
-.bookmarked-books img:hover,
-.current-book:hover {
-  transform: scale(1.1);
+.bkm-book {
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
-.bookmark-current-book {
-  height: 35vh;
-  border-radius: 10px;
-  margin-top: 2vh;
-  transition: transform 200ms ease-in-out;
+.bkm-book button {
+  position: absolute;
+  font-size: 3em;
+  left: 20px;
+  opacity: 0.3;
+  top: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  transition: all 200ms ease-in-out;
 }
-.bookmark-book-form button {
+.bkm-book button:hover {
+  opacity: 1;
+  transform: scale(1.2);
+}
+.bkm-book button:active {
+  transform: scale(1.4);
+}
+.btn-bookmark-close {
   position: absolute;
   font-size: 1.5em;
   bottom: 3vh;
@@ -244,10 +276,10 @@ body {
   border: none;
   transition: transform 200ms ease-in-out;
 }
-.bookmark-book-form button:hover {
+.btn-bookmark-close:hover {
   transform: scale(1.1);
 }
-.bookmark-book-form button:active {
+.btn-bookmark-close:active {
   transform: scale(1.2);
 }
 /* Forms buttons */
