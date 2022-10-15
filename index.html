@@ -35,35 +35,45 @@
           <input type="url" name="cover" class="inp-add-url" id="add-cover" />
           <button class="btn-add-book" id="add-book">Add book</button>
         </form>
-        <form action="" class="form edit-book-form">
+        <form action="" class="edit-book-form">
           <label for="title" class="edit-title">Current title:</label>
           <input type="text" name="title" class="title" id="edit-title" />
           <label for="author" class="edit-author">Current author</label>
           <input type="text" name="author" class="author" id="edit-author" />
           <label for="cover" class="edit-url">Current cover URL</label>
           <input type="url" name="cover" class="url" id="edit-url" />
+          <label for="checkbox">Have you read the book?</label>
+          <input
+            type="checkbox"
+            name="edit-status"
+            class="edit-status"
+            id="edit-status"
+          />
           <button class="btn-edit-book" id="edit-book">Edit book</button>
         </form>
-        <div class="form view-book-form"></div>
-        <div class="form delete-book-form">
-          <img class="form" src="images/book-covers-big.jpeg" alt="#" />
+        <div class="view-book-form">
+          <img class="view-book-img" src="" alt="View current book" />
+          <h1>Have you read the book?</h1>
+          <p class="read-status">N/A</p>
+          <button class="btn-close-view-book" id="close-view-book">
+            Close
+          </button>
+        </div>
+        <div class="delete-book-form">
+          <img class="delete-book-img" src="" alt="Delete current book" />
           <button class="btn-delete-book" id="delete-book">Delete book</button>
         </div>
-        <div class="form bookmark-book-form">
-          <h1 class="form">Bookmarked books</h1>
-          <div class="form bookmarked-books">
-            <div class="form bkm-book">
-              <img class="form" src="images/book-covers-big.jpeg" alt="Cover" />
-            </div>
+        <div class="bookmark-book-form">
+          <h1 class="">Bookmarked books</h1>
+          <div class="bookmarked-books">
+            <!-- Bookmarked books are shown here -->
           </div>
           <img
-            src="images/book-covers-big.jpeg"
-            class="form current-book"
-            alt="#"
+            src=""
+            class="bookmark-current-book"
+            alt="Bookmark current book"
           />
-          <button class="form-bookmark-book" id="bookmark-book">
-            Bookmark
-          </button>
+          <button class="btn-bookmark-book" id="bookmark-book">Bookmark</button>
         </div>
       </section>
       <footer>

@@ -135,6 +135,7 @@ body {
   );
   transition: transform 200ms ease-in-out;
 }
+
 /* Delete book form */
 .delete-book-form {
   position: fixed;
@@ -157,6 +158,37 @@ body {
 .delete-book-form img {
   height: 65vh;
   border-radius: 20px;
+}
+.view-book-form {
+  position: fixed;
+  top: 0;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 8vh 0 5vh 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.5),
+    rgba(128, 128, 128, 0.5)
+  );
+  transition: transform 200ms ease-in-out;
+}
+.view-book-form img {
+  height: 60vh;
+  border-radius: 20px;
+}
+.view-book-form h1 {
+  margin-top: 10px;
+  color: white;
+}
+.view-book-form p {
+  margin-top: 10px;
+  font-size: 2em;
+  color: white;
 }
 /* Bookmark book form */
 .bookmark-book-form {
@@ -198,7 +230,7 @@ body {
 .current-book:hover {
   transform: scale(1.1);
 }
-.current-book {
+.bookmark-current-book {
   height: 35vh;
   border-radius: 10px;
   margin-top: 2vh;
@@ -238,9 +270,10 @@ body {
 }
 .add-book-form button,
 .edit-book-form button,
-.delete-book-form button {
+.delete-book-form button,
+.view-book-form button {
   position: absolute;
-  bottom: 10vh;
+  bottom: 3vh;
   font-size: 1.5em;
   width: 20vw;
   height: 7vh;
@@ -252,12 +285,14 @@ body {
 }
 .add-book-form button:hover,
 .edit-book-form button:hover,
-.delete-book-form button:hover {
+.delete-book-form button:hover,
+.view-book-form button:hover {
   transform: scale(1.1);
 }
 .add-book-form button:active,
 .edit-book-form button:active,
-.delete-book-form button:active {
+.delete-book-form button:active,
+.view-book-form button:active {
   transform: scale(1.2);
 }
 /* Footer styling */
